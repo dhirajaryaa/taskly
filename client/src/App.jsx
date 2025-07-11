@@ -1,8 +1,10 @@
+import Navbar from "./components/Navbar"
 
 function App() {
   return (
      <section>
-      <h1>Task manger</h1>
+      {/* header  */}
+      <Navbar />
      </section>
   )
 }
