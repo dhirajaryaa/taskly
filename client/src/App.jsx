@@ -1,8 +1,9 @@
-import React from 'react'
 
 function App() {
   return (
-    <div>App</div>
+     <section>
+      <h1>Task manger</h1>
+     </section>
   )
 }
 
