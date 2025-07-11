@@ -89,9 +89,30 @@ const updateTask = AsyncHandler(async (req, res) => {
     )
 });
 
+//? move in trash task
+const taskMoveOnTrash = AsyncHandler(async (req, res) => {
+    const { taskId } = req.params;
+    if (!taskId) {
+        throw new ApiError(400, "Invalid task Id!")
+    };
+    const task = await taskModal.findByIdAndUpdate(taskId,{
+        inTrash : true
+    },{
+        new : true
+    });
+    if (!task) {
+        throw new ApiError(400, "Task not move in trash")
+    };
+    return res.status(200).json(
+        new ApiResponse(200, "task move in trash ✅", task)
+    )
+});
+
+
 export {
     createTask,
     getAllTasks,
     getTask,
-    updateTask
+    updateTask,
+    taskMoveOnTrash
 }

@@ -1,5 +1,5 @@
 import express from 'express';
-import { createTask, getAllTasks, getTask, updateTask } from '../controllers/task.controller.js';
+import { createTask, getAllTasks, getTask, taskMoveOnTrash, updateTask } from '../controllers/task.controller.js';
 
 export const taskRouter = express.Router();
 
@@ -11,3 +11,5 @@ taskRouter.get("/",getAllTasks);
 taskRouter.get("/:taskId",getTask);
 // update task
 taskRouter.put("/:taskId",updateTask);
+// trash move task
+taskRouter.delete("/:taskId",taskMoveOnTrash);
