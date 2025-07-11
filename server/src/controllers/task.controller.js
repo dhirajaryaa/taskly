@@ -108,11 +108,29 @@ const taskMoveOnTrash = AsyncHandler(async (req, res) => {
     )
 });
 
+//? mark complete task
+const taskCompletedMark = AsyncHandler(async (req, res) => {
+    const { taskId } = req.params;
+    if (!taskId) {
+        throw new ApiError(400, "Invalid task Id!")
+    };
+    const task = await taskModal.findById(taskId);
+    if (!task) {
+        throw new ApiError(400, "Task not found!")
+    };
+    task.isCompleted = !task.isCompleted;
+    const updatedTask = await task.save();
+    return res.status(200).json(
+        new ApiResponse(200, "task completed ✅", updatedTask)
+    )
+});
+
 
 export {
     createTask,
     getAllTasks,
     getTask,
     updateTask,
-    taskMoveOnTrash
+    taskMoveOnTrash,
+    taskCompletedMark
 }
