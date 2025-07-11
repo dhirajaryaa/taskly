@@ -45,8 +45,24 @@ const getAllTasks = AsyncHandler(async (req, res) => {
     )
 });
 
+//? get one task
+const getTask = AsyncHandler(async (req, res) => {
+    const { taskId } = req.params;
+    if (!taskId) {
+        throw new ApiError(400, "Invalid task Id!")
+    };
+    const task = await taskModal.findById(taskId);
+    if (!task) {
+        throw new ApiError(400, "Task not found!")
+    };
+    return res.status(200).json(
+        new ApiResponse(200, "task fetched ✅", task)
+    )
+})
+
 
 export {
     createTask,
-    getAllTasks
+    getAllTasks,
+    getTask
 }
