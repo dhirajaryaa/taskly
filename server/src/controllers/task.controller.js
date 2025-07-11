@@ -29,11 +29,11 @@ const getAllTasks = AsyncHandler(async (req, res) => {
     };
     const skip = (pageNo - 1) * limit;
 
-    const tasks = await taskModal.find().skip(skip).limit(limit);
+    const tasks = await taskModal.find({inTrash : false}).skip(skip).limit(limit);
     if (!tasks) {
         throw new ApiError(400, "task not found!");
     };
-    const totalTasks = await taskModal.countDocuments();
+    const totalTasks = await taskModal.countDocuments({inTrash: false});
     const totalPages = Math.ceil(totalTasks / limit);
 
     return res.status(200).json(
@@ -52,7 +52,7 @@ const getTask = AsyncHandler(async (req, res) => {
         throw new ApiError(400, "Invalid task Id!")
     };
     const task = await taskModal.findById(taskId);
-    if (!task) {
+    if (task?.inTrash) {
         throw new ApiError(400, "Task not found!")
     };
     return res.status(200).json(
