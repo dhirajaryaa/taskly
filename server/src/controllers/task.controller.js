@@ -1,5 +1,6 @@
 import {AsyncHandler} from '../utils/asyncHandler.js';
 import {ApiError} from '../utils/apiError.js';
+import {ApiResponse} from '../utils/apiResponse.js';
 import {taskModal} from '../models/task.model.js'
 
 //? create task 
@@ -15,9 +16,7 @@ if(!title){
 
 const data = await taskModal.create({title,description,resourceLinks});
 
-    return res.status(201).json({"message":"task created 📝!",
-        "data": data
-    });
+    return res.status(201).json(new ApiResponse(201,"task created 📝",data));
 })
 
 
