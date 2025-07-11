@@ -3,16 +3,16 @@ import TaskForm from "./components/task/TaskForm"
 
 function App() {
   return (
-     <section>
+    <section>
       {/* header  */}
       <Navbar />
       <div className="flex flex-col gap-2 max-w-3xl mx-auto w-full  border border-gray-200 shadow rounded-xl my-12">
         <h2 className="text-xl font-bold text-center mt-7">Daily Tasks {"(2/5)"} </h2>
-      {/* task add form  */}
-      <TaskForm />
+        {/* task add form  */}
+        <TaskForm />
 
       </div>
-     </section>
+    </section>
   )
 }
 

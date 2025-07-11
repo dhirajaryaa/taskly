@@ -1,25 +1,17 @@
 import { useState } from "react"
-import { IoIosArrowForward, IoIosArrowDown, IoIosLink } from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import ResourceLink from "./ResourceLink";
 
 
 function TaskForm() {
-    const [extended, setExtended] = useState(true);
-    const [links, setLinks] = useState([
-        "http://google.com",
-        "http://google.com",
-        "http://google.com",
-        "http://google.com dsfafasdfasdfasdfdsf",
-        "http://google.com",
-        "http://google.com",
-
-    ]);
+    const [extended, setExtended] = useState(false);
+    const [links, setLinks] = useState([]);
     return (
-        <div className="flex items-start gap-2 w-full my-6 px-4">
+        <div className={`flex gap-2 w-full my-6 px-4 ${extended ? "items-start" : "items-center"}`}>
             <button
                 onClick={() => setExtended(prev => !prev)}
                 type="button"
-                className="rounded-lg bg-gray-200 p-1 transition-all shadow duration-150">
+                className="rounded-lg bg-gray-200 p-1 transition-all shadow duration-150 h-full">
                 {
                     extended ?
                         <IoIosArrowDown size={26} /> :
@@ -27,18 +19,20 @@ function TaskForm() {
                 }
             </button>
             <div className="w-full h-auto flex gap-3 flex-col">
-
+                {/* title  */}
                 <input type="text"
                     placeholder="Add new task"
                     className="border-2 rounded-xl w-full px-4 py-2 border-gray-300 shadow"
                 />
                 {extended &&
                     <>
+                        {/* description  */}
                         <textarea type="text"
                             placeholder="Add task description"
                             className="border-2 rounded-xl w-full px-4 py-2 border-gray-300 shadow"
                         />
-                        <ResourceLink links={links}/>
+                        {/* links list  */}
+                        <ResourceLink links={links} />
                     </>
                 }
             </div>
