@@ -3,7 +3,7 @@ import TaskForm from "./components/task/TaskForm"
 
 function App() {
   return (
-    <section>
+    <section className="p-4">
       {/* header  */}
       <Navbar />
       <div className="flex flex-col gap-2 max-w-3xl mx-auto w-full  border border-gray-200 shadow rounded-xl my-12">
