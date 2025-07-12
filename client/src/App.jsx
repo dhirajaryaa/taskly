@@ -7,7 +7,7 @@ function App() {
   const [tasks, setTasks] = useState([
   {
     title: "Read Book 📖",
-    description: "Finish reading chapter 3 of 'Deep Work'.",
+    description: "",
     resourceLink: [],
     completed: true
   },
@@ -20,7 +20,7 @@ function App() {
   {
     title: "Watch Tutorial 🎥",
     description: "Watch a YouTube tutorial on JavaScript basics.",
-    resourceLink: ["https://www.youtube.com/watch?v=W6NZfCO5SIk","https://www.youtube.com/watch?v=W6NZfCO5SIk"],
+    resourceLink: ["https://www.youtube.com/watch?v=W6NZfCO5SIk",],
     completed: false
   },
   {

@@ -10,10 +10,10 @@ function TaskItem({ task }) {
         <button type="button" className="size-">
           {task.completed ? <MdCheckBox size={25} className="text-green-500" /> : <MdOutlineCheckBoxOutlineBlank size={25} />}
         </button>
-        <div className="flex flex-col gap-2 p-1">
-        <h3 className="text-base font-semibold leading-2">{task.title}</h3>
-        <p className="text-sm text-gray-700">{task.description || ""}</p>
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-col gap-2justify-center">
+        <h3 className="text-base font-semibold capitalize">{task.title}</h3>
+        <p className="text-sm text-gray-700 -mt-1">{task.description || ""}</p>
+        <div className="flex gap-2 items-center mt-1">
           {
                           task?.resourceLink?.map((link, index) =>
                               <a key={index} href={link} target="_blank"
